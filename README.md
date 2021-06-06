@@ -1,0 +1,171 @@
+<!--
+
+@license Apache-2.0
+
+Copyright (c) 2018 The Stdlib Authors.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+
+# incrhmean
+
+> Compute a [harmonic mean][harmonic-mean] incrementally.
+
+<section class="intro">
+
+The [harmonic mean][harmonic-mean] of positive real numbers `x_0, x_1, ..., x_{n-1}` is defined as
+
+<!-- <equation class="equation" label="eq:harmonic_mean" align="center" raw="\begin{align}H &= \frac{n}{\frac{1}{x_0} + \frac{1}{x_1} + \cdots + \frac{1}{x_{n-1}}} \\ &= \frac{n}{\sum_{i=0}^{n-1} \frac{1}{x_i}} \\ &= \biggl( \frac{\sum_{i=0}^{n-1} \frac{1}{x_i}}{n} \biggr)^{-1}\end{align}" alt="Equation for the harmonic mean."> -->
+
+<div class="equation" align="center" data-raw-text="\begin{align}H &amp;= \frac{n}{\frac{1}{x_0} + \frac{1}{x_1} + \cdots + \frac{1}{x_{n-1}}} \\ &amp;= \frac{n}{\sum_{i=0}^{n-1} \frac{1}{x_i}} \\ &amp;= \biggl( \frac{\sum_{i=0}^{n-1} \frac{1}{x_i}}{n} \biggr)^{-1}\end{align}" data-equation="eq:harmonic_mean">
+    <img src="https://cdn.rawgit.com/stdlib-js/stdlib/2b632747053b9e357a4663369528fe62b29a6d55/lib/node_modules/@stdlib/stats-incr-hmean/docs/img/equation_harmonic_mean.svg" alt="Equation for the harmonic mean.">
+    <br>
+</div>
+
+<!-- </equation> -->
+
+</section>
+
+<!-- /.intro -->
+
+<section class="installation">
+
+## Installation
+
+```bash
+npm install @stdlib/stats-incr-hmean
+```
+
+</section>
+
+<section class="usage">
+
+## Usage
+
+```javascript
+var incrhmean = require( '@stdlib/stats-incr-hmean' );
+```
+
+#### incrhmean()
+
+Returns an accumulator `function` which incrementally computes a [harmonic mean][harmonic-mean].
+
+```javascript
+var accumulator = incrhmean();
+```
+
+#### accumulator( \[x] )
+
+If provided an input value `x`, the accumulator function returns an updated [harmonic mean][harmonic-mean]. If not provided an input value `x`, the accumulator function returns the current [harmonic mean][harmonic-mean].
+
+```javascript
+var accumulator = incrhmean();
+
+var v = accumulator( 2.0 );
+// returns 2.0
+
+v = accumulator( 1.0 );
+// returns ~1.33
+
+v = accumulator( 3.0 );
+// returns ~1.64
+
+v = accumulator();
+// returns ~1.64
+```
+
+</section>
+
+<!-- /.usage -->
+
+<section class="notes">
+
+## Notes
+
+-   Input values are **not** type checked. If provided `NaN` or a value which, when used in computations, results in `NaN`, the accumulated value is `NaN` for **all** future invocations. If non-numeric inputs are possible, you are advised to type check and handle accordingly **before** passing the value to the accumulator function.
+
+</section>
+
+<!-- /.notes -->
+
+<section class="examples">
+
+## Examples
+
+<!-- eslint no-undef: "error" -->
+
+```javascript
+var randu = require( '@stdlib/random-base-randu' );
+var incrhmean = require( '@stdlib/stats-incr-hmean' );
+
+var accumulator;
+var v;
+var i;
+
+// Initialize an accumulator:
+accumulator = incrhmean();
+
+// For each simulated datum, update the harmonic mean...
+for ( i = 0; i < 100; i++ ) {
+    v = randu() * 100.0;
+    accumulator( v );
+}
+console.log( accumulator() );
+```
+
+</section>
+
+<!-- /.examples -->
+
+
+<section class="main-repo" >
+
+* * *
+
+## Notice
+
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+
+For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
+
+---
+
+## License
+
+See [LICENSE][stdlib-license].
+
+
+## Copyright
+
+Copyright &copy; 2016-2021. The Stdlib [Authors][stdlib-authors].
+
+</section>
+
+<!-- /.stdlib -->
+
+<!-- Section for all links. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="links">
+
+[stdlib]: https://github.com/stdlib-js/stdlib
+
+[stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
+
+[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/stats-incr-hmean/main/LICENSE
+
+[harmonic-mean]: https://en.wikipedia.org/wiki/Harmonic_mean
+
+</section>
+
+<!-- /.links -->
