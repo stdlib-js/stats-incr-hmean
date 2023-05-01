@@ -1,7 +1,7 @@
-/**
+/*
 * @license Apache-2.0
 *
-* Copyright (c) 2018 The Stdlib Authors.
+* Copyright (c) 2019 The Stdlib Authors.
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -16,16 +16,28 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 2.0
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
 
 /**
-* Compute a harmonic mean incrementally.
+* If provided a value, returns an updated harmonic mean; otherwise, returns the current harmonic mean.
 *
-* @module @stdlib/stats-incr-hmean
+* ## Notes
+*
+* -   If provided `NaN` or a value which, when used in computations, results in `NaN`, the accumulated value is `NaN` for all future invocations.
+*
+* @param x - value
+* @returns harmonic mean
+*/
+type accumulator = ( x?: number ) => number | null;
+
+/**
+* Returns an accumulator function which incrementally computes a harmonic mean.
+*
+* @returns accumulator function
 *
 * @example
-* var incrhmean = require( '@stdlib/stats-incr-hmean' );
-*
 * var accumulator = incrhmean();
 *
 * var v = accumulator();
@@ -40,12 +52,9 @@
 * v = accumulator();
 * // returns ~2.86
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function incrhmean(): accumulator;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = incrhmean;
