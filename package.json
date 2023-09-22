@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/stats-incr-hmean",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Compute a harmonic mean incrementally.",
   "license": "Apache-2.0",
   "author": {
@@ -37,7 +37,7 @@
     "url": "https://github.com/stdlib-js/stdlib/issues"
   },
   "dependencies": {
-    "@stdlib/stats-incr-mean": "^0.0.7",
+    "@stdlib/stats-incr-mean": "^0.1.0",
     "@stdlib/types": "^0.0.14"
   },
   "devDependencies": {
