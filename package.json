@@ -37,7 +37,7 @@
     "url": "https://github.com/stdlib-js/stdlib/issues"
   },
   "dependencies": {
-    "@stdlib/stats-incr-mean": "^0.2.2",
+    "@stdlib/stats-incr-mean": "^0.2.3",
     "@stdlib/types": "^0.4.3"
   },
   "devDependencies": {
